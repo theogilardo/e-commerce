@@ -2,32 +2,26 @@
   <nuxt-link
     @click.native="findProduct"
     class="recommendation"
-    :to="`/product/${data.id}`"
+    :to="`/product/${product.id}`"
   >
     <div class="recommendation__box">
       <img
         class="recommendation__image"
-        :src="getImgUrl(data.image)"
+        :src="getImgUrl(product.image)"
         alt="Shoe"
       />
     </div>
-    <h4 class="recommendation__price">{{ data.price }}</h4>
-    <p class="recommendation__product">{{ data.name }}</p>
-    <p class="recommendation__product">{{ test }}</p>
+    <h4 class="recommendation__price">{{ product.price }}</h4>
+    <p class="recommendation__product">{{ product.name }}</p>
   </nuxt-link>
 </template>
 
 <script>
 export default {
   props: {
-    data: {
+    product: {
       type: Object,
       required: true
-    }
-  },
-  computed: {
-    test() {
-      return this.$store.getters.test;
     }
   },
   methods: {
@@ -35,7 +29,7 @@ export default {
       return require("../assets/" + pic);
     },
     findProduct() {
-      this.$store.commit("findProduct", this.data.id);
+      this.$store.commit("findProduct", this.product.id);
     }
   }
 };

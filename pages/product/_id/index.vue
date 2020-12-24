@@ -24,7 +24,8 @@ export default {
     getImgUrl(pic) {
       return require("@/assets/" + pic);
     }
-  }
+  },
+  layout: "product"
 };
 </script>
 

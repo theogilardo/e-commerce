@@ -2,11 +2,6 @@
   <div id="container">
     <the-navbar />
     <Nuxt />
-    <h1 class="background-text">
-      Original <br />
-      Version
-    </h1>
-    <img class="background-shape" src="../assets/shape.svg" alt="Shoe" />
   </div>
 </template>
 
@@ -41,7 +36,8 @@ export default {
   width 100%
 
 html
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 62.5%;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -74,8 +70,7 @@ p
 
 #container
   /* max-width: 1366px; */
-  // max-width: 1100px;
+  max-width: 1100px;
   // border: 1px solid red;
-  width 100%
   margin: 0 auto;
 </style>

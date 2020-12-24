@@ -15,12 +15,13 @@
     </main>
     <h2>Products Recommended</h2>
     <section class="recommendations">
-      <shoe-product
+      <product-shoe
         v-for="product in products"
         :key="product.id"
-        :data="product"
+        :product="product"
       />
     </section>
+    <img src="@/assets/shape-color.svg" alt="" class="recommendations__shape" />
     <div class="background-hero">
       <img
         class="background-hero__image"
@@ -32,12 +33,12 @@
 </template>
 
 <script>
-import ShoeProduct from "../components/ShoeProduct";
+import ProductShoe from "../components/ProductShoe";
 
 export default {
   name: "Homepage",
   components: {
-    ShoeProduct
+    ProductShoe
   },
   computed: {
     products() {
@@ -81,7 +82,6 @@ export default {
     z-index 5
 
 .container
-  // border 1px solid blue
   width 40%
   min-height 100vh
   display flex
@@ -115,43 +115,7 @@ export default {
   justify-content space-around
   padding 12rem 0
 
-// .recommendation
-//   display flex
-//   align-items center
-//   justify-content center
-//   flex-direction column
-//   position relative
-
-//   &::after
-//     content ''
-//     position absolute
-//     top 30%
-//     left 50%
-//     transform translate(-50%, -50%)
-//     width 10rem
-//     height 10rem
-//     background black
-//     z-index -1
-//     border-radius 50%
-
-//   &__box
-//     height 15rem
-//     width 100%
-//     display flex
-//     align-items center
-//     justify-content center
-//     margin-bottom 4rem
-
-//   &__image
-//     width auto
-//     height 150px
-//     object-fit cover
-
-//   &__price
-//     margin-bottom .5em
-//     align-self flex-start
-
-//   &__product
-//     text-transform uppercase
-//     align-self flex-start
+  &__shape
+    // display block
+    width 100%
 </style>
