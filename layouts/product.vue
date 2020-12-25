@@ -2,7 +2,7 @@
   <div id="container">
     <the-navbar />
     <Nuxt />
-    <img src="@/assets/shape-bubbles.svg" alt="" class="background-shape" />
+    <!-- <img src="@/assets/shape-bubbles.svg" alt="" class="background-shape" /> -->
   </div>
 </template>
 
@@ -56,6 +56,9 @@ h4
 
 p
   font-size: 1.2rem;
+
+button:focus
+  outline 0
 
 #container
   /* max-width: 1366px; */

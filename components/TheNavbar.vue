@@ -3,7 +3,7 @@
     <div>
       <p>
         <nuxt-link to="/">
-          New
+          Menu
         </nuxt-link>
       </p>
       <p>
@@ -13,11 +13,29 @@
         Women
       </p>
     </div>
-    <button class="btn">Login</button>
+    <nuxt-link to="/cart">
+      <button class="btn">Your cart size: {{ productCart.length }}</button>
+    </nuxt-link>
   </nav>
 </template>
 
+<script>
+export default {
+  computed: {
+    productCart() {
+      if (this.$store.getters.productCart) {
+        return this.$store.getters.productCart;
+      }
+      return 0;
+    }
+  }
+};
+</script>
+
 <style lang="stylus" scoped>
+a
+  text-decoration none
+  color black
 
 nav
   width 1100px

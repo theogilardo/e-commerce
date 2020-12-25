@@ -21,7 +21,7 @@
         :product="product"
       />
     </section>
-    <img src="@/assets/shape-color.svg" alt="" class="recommendations__shape" />
+    <!-- <img src="@/assets/shape-color.svg" alt="" class="recommendations__shape" /> -->
     <div class="background-hero">
       <img
         class="background-hero__image"
@@ -44,7 +44,8 @@ export default {
     products() {
       return this.$store.getters.products;
     }
-  }
+  },
+  layout: "homepage"
 };
 </script>
 
@@ -57,7 +58,7 @@ export default {
 
 .background-hero
   position absolute
-  top 30%
+  top 20%
   left 45%
 
   &::before

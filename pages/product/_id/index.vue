@@ -1,14 +1,21 @@
 <template>
   <div v-if="productSelected" class="container">
-    <div class="container__background"></div>
+    <div
+      :style="{ background: productSelected.style.background }"
+      class="container__background"
+    ></div>
     <img
       class="container__image"
       :src="getImgUrl(productSelected.image)"
       alt="Shoe"
     />
     <div class="recommendation">
-      <p class="recommendation__name">{{ productSelected.name }}</p>
-      <!-- <p class="recommendation__product">{{ $route.params.id }}</p> -->
+      <p
+        :style="{ color: productSelected.style.color }"
+        class="recommendation__name"
+      >
+        {{ productSelected.name }}
+      </p>
       <h4 class="recommendation__price">{{ productSelected.price }}€</h4>
       <h3 class="recommendation__size">Size</h3>
       <div class="recommendation__sizes">
@@ -18,7 +25,7 @@
           :key="size.id"
         ></size-box>
       </div>
-      <div class="btn">+ Add to card</div>
+      <div @click="addToCart" class="btn">+ Add to card</div>
     </div>
   </div>
 </template>
@@ -33,11 +40,21 @@ export default {
   computed: {
     productSelected() {
       return this.$store.getters.productSelected;
+    },
+    selectProductSize() {
+      return this.$store.getters.selectProductSize;
     }
   },
   methods: {
     getImgUrl(pic) {
       return require("@/assets/" + pic);
+    },
+    addToCart() {
+      // if (this.productSelected && this.selectProductSize) {
+      this.$store.commit("addToCard");
+      // } else {
+      // alert("Please select a size");
+      // }
     }
   },
   layout: "product"
@@ -55,7 +72,6 @@ export default {
     position fixed
     top 0
     left 0
-    background #49C7E3
     z-index -1
 
   &__image
@@ -74,12 +90,11 @@ export default {
   display flex
   flex-direction column
   align-items flex-end
-  // justify-content center
 
   &__name
     font-size 12rem
     font-weight bold
-    margin 8rem 0 1.5rem 0
+    margin 10rem 0 1.5rem 0
 
   &__price
     font-size 4.5rem
