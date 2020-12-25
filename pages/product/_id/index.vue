@@ -1,20 +1,35 @@
 <template>
-  <div v-if="productSelected">
-    <div class="recommendation__box">
-      <img
-        class="recommendation__image"
-        :src="getImgUrl(productSelected.image)"
-        alt="Shoe"
-      />
+  <div v-if="productSelected" class="container">
+    <div class="container__background"></div>
+    <img
+      class="container__image"
+      :src="getImgUrl(productSelected.image)"
+      alt="Shoe"
+    />
+    <div class="recommendation">
+      <p class="recommendation__name">{{ productSelected.name }}</p>
+      <!-- <p class="recommendation__product">{{ $route.params.id }}</p> -->
+      <h4 class="recommendation__price">{{ productSelected.price }}€</h4>
+      <h3 class="recommendation__size">Size</h3>
+      <div class="recommendation__sizes">
+        <size-box
+          v-for="size in productSelected.sizes"
+          :productSize="size"
+          :key="size.id"
+        ></size-box>
+      </div>
+      <div class="btn">+ Add to card</div>
     </div>
-    <h4 class="recommendation__price">{{ productSelected.price }}</h4>
-    <p class="recommendation__product">{{ $route.params.id }}</p>
-    <p class="recommendation__product">{{ productSelected.name }}</p>
   </div>
 </template>
 
 <script>
+import SizeBox from "@/components/SizeBox.vue";
+
 export default {
+  components: {
+    SizeBox
+  },
   computed: {
     productSelected() {
       return this.$store.getters.productSelected;
@@ -31,45 +46,59 @@ export default {
 
 <style lang="stylus" scoped>
 
-.recommendation
-  display flex
-  align-items center
-  justify-content center
-  flex-direction column
+.container
   position relative
-  text-decoration none
-  color inherit
 
-  &::after
-    content ''
-    position absolute
-    top 30%
-    left 50%
-    transform translate(-50%, -50%)
-    width 12rem
-    height 12rem
-    background #2898B0
+  &__background
+    min-height 100vh
+    width 35%
+    position fixed
+    top 0
+    left 0
+    background #49C7E3
     z-index -1
-    border-radius 50%
-
-  &__box
-    height 15rem
-    width 100%
-    display flex
-    align-items center
-    justify-content center
-    margin-bottom 4rem
 
   &__image
     width auto
-    height 150px
+    height 400px
     object-fit cover
+    position fixed
+    top 50%
+    left 10%
+    transform translateY(-50%) scaleX(-1);
+
+.recommendation
+  width 100%
+  text-align right
+  min-height 100vh
+  display flex
+  flex-direction column
+  align-items flex-end
+  // justify-content center
+
+  &__name
+    font-size 12rem
+    font-weight bold
+    margin 8rem 0 1.5rem 0
 
   &__price
-    margin-bottom .5em
-    align-self flex-start
+    font-size 4.5rem
+    margin-bottom 2rem
+    font-weight 300
 
-  &__product
-    text-transform uppercase
-    align-self flex-start
+  &__sizes
+    display flex
+    align-items center
+    justify-content center
+    margin-top 3rem
+    width 40rem
+
+.btn
+  margin-top 7rem
+  font-size 1.2rem
+  text-transform uppercase
+  border none
+  color white
+  background black
+  padding 1.5rem 1rem
 </style>

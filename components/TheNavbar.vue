@@ -2,7 +2,9 @@
   <nav>
     <div>
       <p>
-        New
+        <nuxt-link to="/">
+          New
+        </nuxt-link>
       </p>
       <p>
         Men
@@ -22,6 +24,7 @@ nav
   position absolute
   padding-top 2rem
   left 50%
+  z-index 1000
   transform translateX(-50%)
   display: flex;
   align-items: center;

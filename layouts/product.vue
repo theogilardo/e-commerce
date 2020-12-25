@@ -2,6 +2,7 @@
   <div id="container">
     <the-navbar />
     <Nuxt />
+    <img src="@/assets/shape-bubbles.svg" alt="" class="background-shape" />
   </div>
 </template>
 
@@ -16,24 +17,12 @@ export default {
 
 <style lang="stylus">
 
-.background-text
-  text-transform uppercase
-  position absolute
-  font-size 9rem
-  opacity .5
-  z-index 10
-  top 20%
-  left 50%
-  color #E8E8E8
-  // width 100%
-
-
 .background-shape
   position absolute
-  z-index -1
-  top 35%
-  left 0
-  width 100%
+  left: 90%;
+  top: 65%;
+  z-index 5
+  width 26rem
 
 html
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
